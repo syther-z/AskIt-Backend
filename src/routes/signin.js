@@ -10,12 +10,13 @@ import { createToken } from "../utils/tokenhandling.js";
 /** @param {import("express").Request} req * @param {import("express").Response} res */
 const handleSignIn = async (req, res) => {
     const body = req.body;
-    console.log(body);
+    // console.log(body);
         let manRes = {
             status: HttpStatus.NOT_FOUND,
             message: 'User Not Found'
         };
         let dbRes = await checkLoginCrediential({email: body.email, password: body.password});
+        console.log('/signin');
         console.log(dbRes);
         if(dbRes.status == HttpStatus.INTERNAL_ERROR) {
             manRes = INTERNAL_ERROR_OBJ;

@@ -21,21 +21,23 @@ export const isAuthenticated = (req, res, next) => {
     next();
 }
 
-const isAuthenticatedStrict = (req, res, next) => {
+export const isAuthenticatedStrict = (req, res, next) => {
     const sessionId = req.headers.sessionid;
     const validate = validateToken(sessionId);
     if (!validate){
         return res.status(HttpStatus.UNAUTHORIZED).json({
+            status: HttpStatus.NOT_FOUND,
             message: 'You are not Authenticated for that'
         })
     }
-    res.clientDetails = validate;
+    req.body.user = validate;
+    console.log(req.body);
     next();
 }
 
 const guestCredientails = () => {
     return {
         username: 'Guest',
-        email: 'Not Available'
+        email: 'Login'
     }
 }

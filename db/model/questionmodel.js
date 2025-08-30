@@ -1,10 +1,11 @@
 import mongoose from "mongoose";
-
+import crypto from 'crypto'; 
 export const questionSchema = new mongoose.Schema({
 
     qid: {
         type: String,
-        unique: true
+        unique: true,
+        default: () => crypto.randomBytes(6).toString("hex") 
     },
 
     question: {
@@ -32,8 +33,8 @@ export const questionSchema = new mongoose.Schema({
     }],
 
     answers: [{
-        type: String,
-        
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Answer'
     }],
 
     upvotes: {
