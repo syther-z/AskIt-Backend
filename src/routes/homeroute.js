@@ -1,8 +1,11 @@
 import express from 'express';
 
 
-const homeRoute = (req, res) => {
-    return res.json(req.clientDetails);
+const homeRoute = async (req, res) => {
+    console.log('testing');
+    setTimeout(()=>{
+        return res.json(req.clientDetails)
+    }, 200);
 }
 
 export default homeRoute;

@@ -26,12 +26,11 @@ export const isAuthenticatedStrict = (req, res, next) => {
     const validate = validateToken(sessionId);
     if (!validate){
         return res.status(HttpStatus.UNAUTHORIZED).json({
-            status: HttpStatus.NOT_FOUND,
-            message: 'You are not Authenticated for that'
+            status: HttpStatus.UNAUTHORIZED,
+            message: 'You are not Signed In'
         })
     }
-    req.body.user = validate;
-    console.log(req.body);
+    req.user = validate;
     next();
 }
 

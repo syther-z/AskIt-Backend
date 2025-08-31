@@ -35,6 +35,13 @@ app.route('/question')
 .get(getQuestionRoute)
 .post(postQuestionRoute);
 
+
+app.get('/testing', async (req, res) => {
+   setTimeout(()=>{
+    res.end('done');
+   },1000);
+})
+
 app.listen(PORT, () => {
     console.log(`Server is Running at ${PORT}`);
 });

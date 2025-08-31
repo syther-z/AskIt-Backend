@@ -4,7 +4,7 @@ import { INTERNAL_ERROR_OBJ } from "../../src/utils/commonutils.js";
 
 export const getUserQuestions = async (data) => {
     try {
-        const questions = await questionObj.find({author: data.user.email});
+        const questions = await questionObj.find({author: data.email});
         console.log(questions);
         return {
             status: HttpStatus.OK,

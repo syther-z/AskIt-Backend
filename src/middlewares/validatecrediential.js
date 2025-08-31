@@ -9,6 +9,7 @@ export const validateCredientials = ({signin = undefined}) => {
         const finalValidation = usernameValidation && emailValidation && passwordValidation;
         if (!finalValidation) return res.status(HttpStatus.BAD_REQUEST)
             .json({
+                status: HttpStatus.BAD_REQUEST,
                 message: 'Details are not Valid'
             })
         next();
