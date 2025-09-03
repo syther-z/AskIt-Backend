@@ -16,8 +16,8 @@ const handleSignIn = async (req, res) => {
             message: 'Account Not Found'
         };
         let dbRes = await checkLoginCrediential({email: body.email, password: body.password});
-        console.log('/signin');
-        console.log(dbRes);
+        // console.log('/signin');
+        // console.log(dbRes);
         if(dbRes.status == HttpStatus.INTERNAL_ERROR) {
             manRes = INTERNAL_ERROR_OBJ;
         } else

@@ -5,6 +5,7 @@ export const registerQuestion = async (data, user) => {
     try {
         const question = new questionObj({
             question: data.question,
+            authorname: user.username,
             author: user.email,
             description: data.description,
             tags: data.tags

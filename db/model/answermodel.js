@@ -7,15 +7,21 @@ const answerSchema = new mongoose.Schema({
     unique: true,
     default: () => crypto.randomBytes(6).toString("hex") 
   },
+  qid: {
+    type: String,
+    required: true
+  },
   content: {
     type: String,
     required: true,
     trim: true
   },
   author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    type: String,
     required: true
+  },
+  authorname: {
+    type: String,
   },
   upvotes: {
     type: Number,

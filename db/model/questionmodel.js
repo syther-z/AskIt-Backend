@@ -14,6 +14,11 @@ export const questionSchema = new mongoose.Schema({
         trim: true
     },
 
+    authorname: {
+        type: String,
+        required: true
+    },
+
     // User who asked the question
     author: {
         type: String,
@@ -34,13 +39,12 @@ export const questionSchema = new mongoose.Schema({
 
     answers: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Answer'
+        ref: 'answer'
     }],
 
-    upvotes: {
-        type: Number,
-        default: 0
-    },
+    upvotes: [{
+        type: String
+    }],
 
     createdAt: {
         type: Date,
